@@ -1,6 +1,6 @@
 // school/api/handler.ts
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../school/src/app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
 import { createServer, proxy } from 'aws-serverless-express';
