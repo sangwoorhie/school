@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "build": "cd school && npm install && npm run build"
+  },
   "dependencies": {
     "aws-lambda": "^1.0.7"
   },
