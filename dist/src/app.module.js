@@ -17,7 +17,6 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        /* .env 로딩을 전역으로 활성화 */
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             sheet_module_1.SheetModule,
@@ -26,3 +25,4 @@ exports.AppModule = AppModule = __decorate([
         providers: [app_service_1.AppService],
     })
 ], AppModule);
+//# sourceMappingURL=app.module.js.map

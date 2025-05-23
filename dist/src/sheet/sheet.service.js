@@ -14,12 +14,11 @@ const common_1 = require("@nestjs/common");
 const googleapis_1 = require("googleapis");
 const config_1 = require("@nestjs/config");
 let GoogleSheetsService = class GoogleSheetsService {
+    cfg;
+    sheets;
+    sheetId;
     constructor(cfg) {
         this.cfg = cfg;
-        /*------------------------------------------------------------------
-          ConfigService#get<T>() → T | undefined
-          → 기본값('')을 주고, 직후 필수 값 검증
-        ------------------------------------------------------------------*/
         this.sheetId = this.cfg.get('google.sheetId', '');
         const serviceEmail = this.cfg.get('google.email', '');
         const privateKey = this.cfg.get('google.key', '');
@@ -44,3 +43,4 @@ exports.GoogleSheetsService = GoogleSheetsService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [config_1.ConfigService])
 ], GoogleSheetsService);
+//# sourceMappingURL=sheet.service.js.map

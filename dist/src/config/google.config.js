@@ -6,3 +6,4 @@ exports.default = (0, config_1.registerAs)('google', () => ({
     email: process.env.SA_EMAIL,
     key: (process.env.SA_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
 }));
+//# sourceMappingURL=google.config.js.map
