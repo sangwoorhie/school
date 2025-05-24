@@ -11,7 +11,7 @@ async function initializeApp() {
   if (!app) {
     app = await NestFactory.create(AppModule, new ExpressAdapter(server));
     app.enableCors({
-      origin: [/\.imweb\.me$/, 'http://localhost'],
+      origin: [/\.imweb\.me$/, 'http://localhost', 'https://school-bhwx.vercel.app'],
       methods: ['GET'],
       allowedHeaders: ['Content-Type', 'x-imweb-api-key', 'x-imweb-signature'],
     });

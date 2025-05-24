@@ -12,7 +12,19 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; connect-src 'self' https://school-bhwx.vercel.app;"
+          "value": "default-src 'self'; connect-src 'self' https://school-bhwx.vercel.app *.imweb.me;"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*" 
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, x-imweb-api-key"
         }
       ]
     }
