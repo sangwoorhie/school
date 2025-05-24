@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://school-bhwx.vercel.app;">
+  <title>Fetch Test</title>
+</head>
+<body>
+  <script>
+    fetch('https://school-bhwx.vercel.app/sheets/Sheet1!A1:D10', {
+      method: 'GET',
+      headers: {
+        'x-imweb-api-key': '7da5068f290316c360c7fc3e32b8a1727f0d099f0a'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
