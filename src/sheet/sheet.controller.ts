@@ -37,6 +37,7 @@ export class SheetController {
     @Headers('x-imweb-api-key') apiKey: string,
     @Headers('x-imweb-signature') sig: string,
   ) {
+
     // 방법 ① API Key 검증
     if (!this.verifyApiKey(apiKey)) {
       // 방법 ② HMAC 검증 (주석 해제 시 병행)

@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: [/\.imweb\.me$/, 'http://localhost'], // 아임웹 미리보기·퍼블릭 모두 허용
+    origin: [/\.imweb\.me$/, 'http://localhost', 'https://school-bhwx.vercel.app'], // 아임웹 미리보기·퍼블릭 모두 허용
     methods: ['GET'],
     allowedHeaders: [
       'Content-Type',
