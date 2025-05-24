@@ -2,28 +2,28 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../src/app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
-// import { createRequestHandler } from '@vercel/node'; // Vercel에서 직접 라우팅
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 const server = express();
+let app: any; // Nest.js 애플리케이션 인스턴스 저장
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-  app.enableCors({
-    origin: [/\.imweb\.me$/, 'http://localhost'],
-    methods: ['GET'],
-    allowedHeaders: ['Content-Type', 'x-imweb-api-key', 'x-imweb-signature'],
-  });
-  await app.init();
+async function initializeApp() {
+  if (!app) {
+    app = await NestFactory.create(AppModule, new ExpressAdapter(server));
+    app.enableCors({
+      origin: [/\.imweb\.me$/, 'http://localhost'],
+      methods: ['GET'],
+      allowedHeaders: ['Content-Type', 'x-imweb-api-key', 'x-imweb-signature'],
+    });
+    await app.init();
+  }
+  return app;
 }
 
-let isBootstrapped = false;
+// Vercel 서버리스 함수 핸들러
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  await initializeApp();
 
-server.all('*', async (req, res, next) => {
-  if (!isBootstrapped) {
-    await bootstrap();
-    isBootstrapped = true;
-  }
-  next(); // ✅ Nest 라우터로 요청 전달
-});
-
-export default server; // ✅ Express 인스턴스를 default export
+  // Express 서버로 요청 전달
+  server(req as any, res as any);
+}
