@@ -17,7 +17,10 @@ export class SheetController {
   ) {}
 
   private verifyApiKey(apiKey?: string): boolean {
-    return apiKey === this.cfg.get<string>('IMWEB_API_KEY', '');
+    const validApiKey = this.cfg.get<string>('IMWEB_API_KEY', '');
+    console.log('Expected API Key:', validApiKey); // 디버깅용 로그
+    console.log('Received API Key:', apiKey); // 디버깅용 로그
+    return apiKey === validApiKey;
   }
 
   private verifyHmac(signature: string | undefined, payload: string): boolean {
