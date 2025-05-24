@@ -8,9 +8,7 @@ import {
 import { GoogleSheetsService } from './sheet.service';
 import { ConfigService } from '@nestjs/config';
 import * as crypto from 'crypto';
-import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('sheets') 
 @Controller('sheets')
 export class SheetController {
   constructor(
